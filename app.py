@@ -148,8 +148,8 @@ def close_db(error) :
 if __name__ == '__main__':
     HOST = os.environ.get('SERVER_HOST', 'localhost')
     try:
-        PORT = int(os.environ.get('SERVER_PORT', '5757'))
+        PORT = int(os.environ.get('SERVER_PORT', '5858'))
     except ValueError:
-        PORT = 5757
+        PORT = 5858
     app.run(HOST, PORT, debug=True)
 

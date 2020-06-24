@@ -1,0 +1,4 @@
+Flask==1.0.3
+mysql-connector==2.2.9
+uWSGI==2.0.17.1
+Flask-MySQLdb==0.2.0

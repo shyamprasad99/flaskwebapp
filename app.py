@@ -77,48 +77,6 @@ def logout():
     return redirect(url_for('login'))
 
 
-
-
-@app.route('/homepage/addurl/', methods = ['POST', 'GET'])
-def addurl() :
-    if request.method == 'POST':
-        url = request.form.get('url')
-        cnx = mysql.connector.connect(user='suresh', passwd='Covid@19LIVEIT',
-                                      host='127.0.0.1', db='pythondb'
-                                      )
-        cursor = cnx.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute("INSERT INTO buslinks (id,filename,url,description) VALUES('"+str(id)+","+str(filename)+","+str(url)+","+str(description)+"')")
-        cnx.commit()
-    return render_template('url.html')
-
-
-@app.route('/homepage/deleteurl/', methods = ['POST', 'GET'])
-def deleteurl() :
-    if request.method == 'POST':
-        url = request.form.get('url')
-        cnx = mysql.connector.connect(user='suresh', passwd='Covid@19LIVEIT',
-                                      host='127.0.0.1', db='pythondb'
-                                      )
-        cursor = cnx.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute("DELETE FROM buslinks where filename= '+filename+' ")
-        cnx.commit()
-    return render_template('delete.html')
-
-
-@app.route('/login/homepage/modifyurl/', methods = ['POST', 'GET'])
-def modifyurl(id) :
-    if not session.get('user') :
-        return redirect(url_for('login'))
-    if request.method == 'POST':
-        url = request.form.get('urlmodify')
-        cnx = mysql.connector.connect(user='suresh', passwd='Covid@19LIVEIT',
-                                      host='127.0.0.1', db='pythondb'
-                                      )
-        cursor = cnx.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute("UPDATE `buslinks` SET `url`= '"+url+"' WHERE 'id' = "+id+" ")
-        cnx.commit()
-    return render_template('modifyurl.html')
-
 @app.route('/homepage/techentries')
 @login_required
 def techentries() :
